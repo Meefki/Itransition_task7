@@ -1,6 +1,7 @@
 ﻿namespace Domain.SeedWork;
 
-public class DomainException<T> : Exception
+public class DomainException<T> 
+    : DomainException
     where T : DomainException<T>
 {
     public static string MessageText { get; protected set; } = "";
@@ -11,6 +12,15 @@ public class DomainException<T> : Exception
             new DomainException<T>(message);
     }
 
+    public DomainException(string message = "")
+        : base(message)
+    {
+    }
+}
+
+public abstract class DomainException 
+    : Exception
+{
     public DomainException(string message = "")
         : base(message)
     {

@@ -5,13 +5,13 @@ namespace Domain.Aggregates.Session.GameProcessorEntity;
 
 public abstract class GameProcessor : Entity<Guid>
 {
-    protected GameProcessor(IEntityIdentifier<Guid> id)
+    protected GameProcessor(EntityIdentifier<Guid> id)
         : base(id)
     {
     }
 
     private readonly GameProcessorId id = null!;
-    public override IEntityIdentifier<Guid> Id
+    public override EntityIdentifier<Guid> Id
     {
         get => id;
         init => id = (GameProcessorId)value;

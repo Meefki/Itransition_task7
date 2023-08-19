@@ -3,7 +3,7 @@
 namespace Domain.Aggregates.Hub;
 
 public class PlayerId
-    : IEntityIdentifier<string>
+    : EntityIdentifier<string>
 {
     public static PlayerId Create(string name)
         => new(name);
@@ -11,5 +11,5 @@ public class PlayerId
     private PlayerId(string value)
         => Value = value;
 
-    public string Value { get; init; }
+    public override string Value { get; }
 }

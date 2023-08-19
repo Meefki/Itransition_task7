@@ -12,18 +12,18 @@ public class Session : Entity<Guid>, IAggregateRoot
 
     public Session(
         GameTypes gameType,
-        IList<Player> players,
-        IGameProcessorFactory gameProcessorFactory)
+        IEnumerable<Player> players,
+        GameProcessor gameProcessor)
         : base(SessionId.Create(Guid.NewGuid()))
     {
-        this.players = players;
+        this.players = new List<Player>(players);
         State = States.Created;
-        GameType = gameType; 
-        gameProcessor = gameProcessorFactory.Create(gameType);
+        GameType = gameType;
+        this.gameProcessor = gameProcessor;
     }
 
     private SessionId id = null!;
-    public override IEntityIdentifier<Guid> Id
+    public override EntityIdentifier<Guid> Id
     {
         get => id;
         init => id = (SessionId)value;

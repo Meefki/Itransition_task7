@@ -23,7 +23,7 @@ public class Player
     }
 
     private PlayerId name = null!;
-    public override IEntityIdentifier<string> Id 
+    public override EntityIdentifier<string> Id 
     {
         get => name;
         init => name = (PlayerId)value; 

@@ -4,7 +4,7 @@ namespace Domain.SeedWork;
 
 public abstract class Entity<T> : IEntity
 {
-    public Entity(IEntityIdentifier<T> id)
+    public Entity(EntityIdentifier<T> id)
     {
         Id = id;
         _domainEvents = new();
@@ -12,7 +12,7 @@ public abstract class Entity<T> : IEntity
 
     int? _requestedHashCode;
 
-    public virtual IEntityIdentifier<T> Id { get; init; }
+    public virtual EntityIdentifier<T> Id { get; init; }
 
     private List<IDomainEvent> _domainEvents;
     public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly() ?? new List<IDomainEvent>().AsReadOnly();

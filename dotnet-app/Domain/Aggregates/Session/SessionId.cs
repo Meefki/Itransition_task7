@@ -2,13 +2,19 @@
 
 namespace Domain.Aggregates.Session;
 
-public class SessionId : IEntityIdentifier<Guid>
+public class SessionId : EntityIdentifier<Guid>
 {
     private SessionId(Guid value)
         => Value = value;
 
-    public Guid Value { get; init; }
+    public override Guid Value { get; }
 
     public static SessionId Create(Guid id)
         => new(id);
+
+    public static SessionId Create(string stringId)
+    {
+        Guid id = Guid.Parse(stringId);
+        return Create(id);
+    }
 }

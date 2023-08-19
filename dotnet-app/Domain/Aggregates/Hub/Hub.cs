@@ -19,7 +19,7 @@ public class Hub : Entity<Guid>, IAggregateRoot
     }
 
     private HubId id = null!;
-    public override IEntityIdentifier<Guid> Id
+    public override EntityIdentifier<Guid> Id
     {
         get => id;
         init => id = (HubId)value;
