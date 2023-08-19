@@ -61,7 +61,7 @@ public class Session : Entity<Guid>, IAggregateRoot
         return false;
     }
 
-    public Tuple<States, GameResult?> Process(dynamic processParam)
+    public GameResult? Process(dynamic processParam)
     {
         GameResult? result = null;
         if (State != States.Suspended && 
@@ -72,7 +72,7 @@ public class Session : Entity<Guid>, IAggregateRoot
         if (result is not null)
             ChangeState(States.Ended);
 
-        return new(State, result);
+        return result;
     }
 
     public GameTypes GameType { get; init; }
