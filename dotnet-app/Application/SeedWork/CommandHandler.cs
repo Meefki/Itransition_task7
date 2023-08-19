@@ -36,7 +36,7 @@ public abstract class CommandHandler<TRequest, TResponse>
         }
         catch (Exception ex)
         {
-            SomethingWentWrongDomainException domainException = new("Something went wrong...", ex);
+            SomethingWentWrongDomainException domainException = new(SomethingWentWrongDomainException.MessageText, ex);
             errorDetails = new(domainException, SomethingWentWrongDomainException.MessageText);
             result = false;
             logger.LogError(domainException, message: SomethingWentWrongDomainException.MessageText);
@@ -81,7 +81,7 @@ public abstract class CommandHandler<TRequest>
         }
         catch (Exception ex)
         {
-            SomethingWentWrongDomainException domainException = new("Something went wrong...", ex);
+            SomethingWentWrongDomainException domainException = new(SomethingWentWrongDomainException.MessageText, ex);
             errorDetails = new(domainException, SomethingWentWrongDomainException.MessageText);
             result = false;
             logger.LogError(domainException, message: SomethingWentWrongDomainException.MessageText);
