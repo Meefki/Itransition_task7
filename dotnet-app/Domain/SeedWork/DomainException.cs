@@ -9,8 +9,8 @@ public abstract class DomainException<T>
     protected static void ThrowEx(string message = "", Exception? innerException = null)
     {
         object[] objectParams = innerException is null ?
-            objectParams = new object[] { message } :
-            objectParams = new object[] { message, innerException };
+            new object[] { message } :
+            new object[] { message, innerException };
 
         throw (Activator.CreateInstance(typeof(T), objectParams) as T)!;
     }
