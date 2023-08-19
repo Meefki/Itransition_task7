@@ -27,7 +27,6 @@ public class DomainException<T>
     {
     }
 }
-}
 
 public abstract class DomainException 
     : Exception
