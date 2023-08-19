@@ -14,4 +14,14 @@ public class MorePlayersThanNeededDomainException
     {
         ThrowEx();
     }
+
+    public MorePlayersThanNeededDomainException(string message = "")
+        : base(message)
+    {
+    }
+
+    public MorePlayersThanNeededDomainException(string message = "", Exception? innerException = null)
+        : base(message: message, innerException: innerException)
+    {
+    }
 }

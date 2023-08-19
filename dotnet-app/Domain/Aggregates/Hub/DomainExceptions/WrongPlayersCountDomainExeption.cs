@@ -15,5 +15,13 @@ public class WrongPlayersCountDomainExeption
         ThrowEx();
     }
 
+    public WrongPlayersCountDomainExeption(string message = "")
+        : base(message)
+    {
+    }
 
+    public WrongPlayersCountDomainExeption(string message = "", Exception? innerException = null)
+        : base(message: message, innerException: innerException)
+    {
+    }
 }

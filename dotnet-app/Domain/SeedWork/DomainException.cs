@@ -1,6 +1,6 @@
 ﻿namespace Domain.SeedWork;
 
-public class DomainException<T> 
+public abstract class DomainException<T>
     : DomainException
     where T : DomainException<T>
 {
@@ -12,9 +12,7 @@ public class DomainException<T>
             objectParams = new object[] { message } :
             objectParams = new object[] { message, innerException };
 
-        throw (Activator.CreateInstance(typeof(T), objectParams) as T) ?? (innerException is null ?
-            new DomainException<T>(message) :
-            new DomainException<T>(message, innerException));
+        throw (Activator.CreateInstance(typeof(T), objectParams) as T)!;
     }
 
     public DomainException(string message = "")

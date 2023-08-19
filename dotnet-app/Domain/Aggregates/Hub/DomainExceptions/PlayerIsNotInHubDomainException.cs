@@ -14,4 +14,14 @@ public class PlayerIsNotInHubDomainException
     {
         ThrowEx(string.Format(MessageText, player.Name, hubId.Value));
     }
+
+    public PlayerIsNotInHubDomainException(string message = "")
+        : base(message)
+    {
+    }
+
+    public PlayerIsNotInHubDomainException(string message = "", Exception? innerException = null)
+        : base(message: message, innerException: innerException)
+    {
+    }
 }

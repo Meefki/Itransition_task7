@@ -14,4 +14,14 @@ public class NameTooShortDomainException
     {
         ThrowEx();
     }
+
+    public NameTooShortDomainException(string message = "")
+        : base(message)
+    {
+    }
+
+    public NameTooShortDomainException(string message = "", Exception? innerException = null)
+        : base(message: message, innerException: innerException)
+    {
+    }
 }
