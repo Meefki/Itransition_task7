@@ -15,4 +15,14 @@ public class InvalidStateDomainException
         string message = string.Format(MessageText, from.Name, to.Name);
         ThrowEx(message);
     }
+
+    public InvalidStateDomainException(string message = "")
+        : base(message)
+    {
+    }
+
+    public InvalidStateDomainException(string message = "", Exception? innerException = null)
+        : base(message: message, innerException: innerException)
+    {
+    }
 }
