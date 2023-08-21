@@ -2,18 +2,20 @@
 
 namespace Domain.Aggregates.Session;
 
-public sealed class SessionId 
+public sealed class PlayerId
     : EntityIdentifier<Guid>
 {
-    private SessionId(Guid value)
-        => Value = value;
+    private PlayerId(Guid value)
+    {
+        Value = value;
+    }
 
     public override Guid Value { get; }
 
-    public static SessionId Create(Guid id)
+    public static PlayerId Create(Guid id)
         => new(id);
 
-    public static SessionId Create(string stringId)
+    public static PlayerId Create(string stringId)
     {
         Guid id = Guid.Parse(stringId);
         return Create(id);
@@ -29,9 +31,9 @@ public sealed class SessionId
         return base.GetHashCode();
     }
 
-    public static bool operator ==(SessionId left, SessionId right)
+    public static bool operator ==(PlayerId left, PlayerId right)
         => EqualOperator(left, right);
 
-    public static bool operator !=(SessionId left, SessionId right)
+    public static bool operator !=(PlayerId left, PlayerId right)
         => NotEqualOperator(left, right);
 }

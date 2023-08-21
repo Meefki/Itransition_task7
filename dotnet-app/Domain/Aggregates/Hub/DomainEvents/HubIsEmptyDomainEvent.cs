@@ -2,4 +2,4 @@
 
 namespace Domain.Aggregates.Hub.DomainEvents;
 
-public record HubIsEmptyDomainEvent(HubId Id) : IDomainEvent;
+public sealed record HubIsEmptyDomainEvent(HubId Id) : IDomainEvent;

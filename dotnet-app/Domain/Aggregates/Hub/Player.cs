@@ -1,34 +1,28 @@
 ﻿using Domain.Aggregates.Hub.DomainExceptions;
 using Domain.SeedWork;
-using System.Globalization;
 
 namespace Domain.Aggregates.Hub;
 
-public class Player
-    : Entity<string>
+public sealed class Player
+    : Entity<Guid>
 {
-    //public static Player CreateLeader(string name)
-    //    => new(name, true);
-
-    //public static Player Create(string name)
-    //    => new(name, false);
-
-    public Player(string name, bool isLeader = false)
-        : base(PlayerId.Create(name))
+    public Player(PlayerId id, string name, bool isLeader = false)
+        : base(id)
     {
         if (name.Length < 3)
             NameTooShortDomainException.Throw();
 
+        Name = name;
         IsLeader = isLeader;
     }
 
-    private PlayerId name = null!;
-    public override EntityIdentifier<string> Id 
+    private PlayerId id = null!;
+    public override EntityIdentifier<Guid> Id 
     {
-        get => name;
-        init => name = (PlayerId)value; 
+        get => id;
+        init => id = (PlayerId)value; 
     }
-    public string Name => name.Value;
+    public string Name { get; init; }
 
     public bool IsLeader { get; private set; }
 

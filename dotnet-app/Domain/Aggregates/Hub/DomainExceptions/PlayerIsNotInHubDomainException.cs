@@ -2,7 +2,7 @@
 
 namespace Domain.Aggregates.Hub.DomainExceptions;
 
-public class PlayerIsNotInHubDomainException
+public sealed class PlayerIsNotInHubDomainException
     : DomainException<PlayerIsNotInHubDomainException>
 {
     static PlayerIsNotInHubDomainException()

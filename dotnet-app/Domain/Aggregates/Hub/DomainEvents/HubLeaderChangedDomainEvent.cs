@@ -2,4 +2,4 @@
 
 namespace Domain.Aggregates.Hub.DomainEvents;
 
-public record HubLeaderChangedDomainEvent(HubId Id, Player NewLeader) : IDomainEvent;
+public sealed record HubLeaderChangedDomainEvent(HubId Id, Player NewLeader) : IDomainEvent;

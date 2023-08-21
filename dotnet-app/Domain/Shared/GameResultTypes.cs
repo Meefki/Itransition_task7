@@ -2,7 +2,7 @@
 
 namespace Domain.Shared;
 
-public class GameResultTypes
+public sealed class GameResultTypes
     : Enumeration
 {
     public static GameResultTypes Draw => new(1, nameof(Draw));

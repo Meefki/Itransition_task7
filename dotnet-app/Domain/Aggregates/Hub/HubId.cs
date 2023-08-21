@@ -2,7 +2,8 @@
 
 namespace Domain.Aggregates.Hub;
 
-public class HubId : EntityIdentifier<Guid>
+public sealed class HubId 
+    : EntityIdentifier<Guid>
 {
     private HubId(Guid value)
         => Value = value;
@@ -17,4 +18,20 @@ public class HubId : EntityIdentifier<Guid>
         Guid id = Guid.Parse(stringId);
         return Create(id);
     }
+
+    public override bool Equals(object? obj)
+    {
+        return base.Equals(obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public static bool operator ==(HubId left, HubId right)
+        => EqualOperator(left, right);
+
+    public static bool operator !=(HubId left, HubId right)
+        => NotEqualOperator(left, right);
 }

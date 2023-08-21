@@ -1,17 +1,18 @@
-﻿using Domain.Aggregates.Hub;
-using Domain.SeedWork;
+﻿using Domain.SeedWork;
+using Domain.Shared;
 
 namespace Domain.Aggregates.Session.GameProcessorEntity;
 
-public abstract class GameProcessor : Entity<Guid>
+public abstract class GameProcessor 
+    : Entity<GameTypes>, IDisposable
 {
-    protected GameProcessor(EntityIdentifier<Guid> id)
+    protected GameProcessor(GameProcessorId id)
         : base(id)
     {
     }
 
     private readonly GameProcessorId id = null!;
-    public override EntityIdentifier<Guid> Id
+    public override EntityIdentifier<GameTypes> Id
     {
         get => id;
         init => id = (GameProcessorId)value;
@@ -21,4 +22,12 @@ public abstract class GameProcessor : Entity<Guid>
 
     public abstract void Start(dynamic startParam);
     public abstract GameResult? Process(dynamic processParam);
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected abstract void Dispose(bool disposing);
 }

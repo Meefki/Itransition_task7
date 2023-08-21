@@ -6,7 +6,8 @@ using System.Collections.ObjectModel;
 
 namespace Domain.Aggregates.Hub;
 
-public class Hub : Entity<Guid>, IAggregateRoot
+public sealed class Hub 
+    : Entity<Guid>, IAggregateRoot
 {
     public Hub(IGameFactory gameFactory, GameTypes gameType, Player hubLeader)
         : base(HubId.Create(Guid.NewGuid()))
@@ -55,8 +56,8 @@ public class Hub : Entity<Guid>, IAggregateRoot
             MorePlayersThanNeededDomainException.Throw();
 
         player = players.Any(x => x.IsLeader) ?
-            player.IsLeader ? new(player.Name) : player :
-            player.IsLeader ? player : new(player.Name, true);
+            player.IsLeader ? new((PlayerId)player.Id, player.Name) : player :
+            player.IsLeader ? player : new((PlayerId)player.Id, player.Name, true);
 
         players.Add(player);
 

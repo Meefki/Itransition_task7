@@ -6,18 +6,12 @@ namespace Domain.Aggregates.Hub;
 public abstract class Game
     : ValueObject
 {
-    public Game(
-        //int playersCount,
-        GameTypes gameType)
+    public Game(GameTypes gameType)
     {
-        //if (playersCount <= 0)
-        //    WrongPlayersCountDomainExeption.Throw();
-
-        //PlayersCount = playersCount;
         GameType = gameType;
     }
 
-    public abstract int PlayersCount { get; init; }
+    public abstract int PlayersCount { get; }
     public GameTypes GameType { get; init; }
     
 

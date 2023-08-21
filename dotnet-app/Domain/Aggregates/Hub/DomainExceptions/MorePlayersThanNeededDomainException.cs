@@ -2,7 +2,7 @@
 
 namespace Domain.Aggregates.Hub.DomainExceptions;
 
-public class MorePlayersThanNeededDomainException
+public sealed class MorePlayersThanNeededDomainException
     : DomainException<MorePlayersThanNeededDomainException>
 {
     static MorePlayersThanNeededDomainException()

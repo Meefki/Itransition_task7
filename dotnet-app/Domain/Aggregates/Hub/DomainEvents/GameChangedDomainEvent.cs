@@ -3,4 +3,4 @@ using Domain.Shared;
 
 namespace Domain.Aggregates.Hub.DomainEvents;
 
-public record GameChangedDomainEvent(HubId Id, GameTypes GameType) : IDomainEvent;
+public sealed record GameChangedDomainEvent(HubId Id, GameTypes GameType) : IDomainEvent;

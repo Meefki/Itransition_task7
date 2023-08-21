@@ -2,7 +2,7 @@
 
 namespace Domain.Aggregates.Hub.DomainExceptions;
 
-public class WrongPlayersCountDomainExeption
+public sealed class WrongPlayersCountDomainExeption
     : DomainException<WrongPlayersCountDomainExeption>
 {
     static WrongPlayersCountDomainExeption()

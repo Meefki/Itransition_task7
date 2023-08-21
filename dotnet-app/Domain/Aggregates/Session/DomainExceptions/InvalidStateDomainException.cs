@@ -2,7 +2,7 @@
 
 namespace Domain.Aggregates.Session.DomainExceptions;
 
-public class InvalidStateDomainException
+public sealed class InvalidStateDomainException
     : DomainException<InvalidStateDomainException>
 {
     static InvalidStateDomainException()

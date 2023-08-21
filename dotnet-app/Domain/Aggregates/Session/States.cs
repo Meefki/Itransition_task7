@@ -2,7 +2,7 @@
 
 namespace Domain.Aggregates.Session;
 
-public class States
+public sealed class States
     : Enumeration
 {
     public static States Created => new(1, nameof(Created));

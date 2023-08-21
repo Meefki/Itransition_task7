@@ -6,7 +6,8 @@ using System.Collections.ObjectModel;
 
 namespace Domain.Aggregates.Session;
 
-public class Session : Entity<Guid>, IAggregateRoot
+public sealed class Session 
+    : Entity<Guid>, IAggregateRoot
 {
     private readonly GameProcessor gameProcessor;
 

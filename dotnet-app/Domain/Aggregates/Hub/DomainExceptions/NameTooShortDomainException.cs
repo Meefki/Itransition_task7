@@ -2,7 +2,7 @@
 
 namespace Domain.Aggregates.Hub.DomainExceptions;
 
-public class NameTooShortDomainException 
+public sealed class NameTooShortDomainException 
     : DomainException<NameTooShortDomainException>
 {
     static NameTooShortDomainException()

@@ -2,7 +2,7 @@
 
 namespace Domain.Shared.DomainExceptions;
 
-public class SomethingWentWrongDomainException
+public sealed class SomethingWentWrongDomainException
     : DomainException<SomethingWentWrongDomainException>
 {
     static SomethingWentWrongDomainException()

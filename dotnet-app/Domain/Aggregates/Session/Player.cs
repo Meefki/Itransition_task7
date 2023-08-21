@@ -3,10 +3,13 @@ using Domain.SeedWork;
 
 namespace Domain.Aggregates.Session;
 
-public class Player
-    : ValueObject
+public sealed class Player
+    : Entity<Guid>
 {
-    public Player(string name)
+    public Player(
+        PlayerId id, 
+        string name)
+        : base(id)
     {
         if (name.Length < 3)
             NameTooShortDomainException.Throw();
@@ -14,22 +17,12 @@ public class Player
         Name = name;
     }
 
-    public string Name { get; init; }
-
-    protected override IEnumerable<object> GetEqualityComponents()
+    private readonly PlayerId id = null!;
+    public override EntityIdentifier<Guid> Id
     {
-        yield return Name;
+        get => id;
+        init => id = (PlayerId)value;
     }
 
-    public static bool operator== (Player left, Player right)
-        => EqualOperator(left, right);
-
-    public static bool operator!= (Player left, Player right)
-        => NotEqualOperator(left, right);
-
-    public override bool Equals(object? obj)
-        => base.Equals(obj);
-
-    public override int GetHashCode()
-        => base.GetHashCode();
+    public string Name { get; init; }
 }

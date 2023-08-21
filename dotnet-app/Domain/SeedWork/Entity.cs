@@ -12,7 +12,7 @@ public abstract class Entity<T> : IEntity
 
     int? _requestedHashCode;
 
-    public virtual EntityIdentifier<T> Id { get; init; }
+    public abstract EntityIdentifier<T> Id { get; init; }
 
     private List<IDomainEvent> _domainEvents;
     public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly() ?? new List<IDomainEvent>().AsReadOnly();
